@@ -1,26 +1,71 @@
 import './App.css'
+import { useState } from 'react'
+import Demo from './Mytypewriter'
+
+
+
+
+
 
 function App() {
- 
 
-  return (
-    <>
-    
-    <div className="flex flex-col bg-red-500 gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4 ...">
-  <img className="mx-auto block h-24 rounded-full sm:mx-0 sm:shrink-0" src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/161/746/original/%F0%9F%8D%97Butterflied_Chicken_with_Smokey_Barbecue_Glaze_%F0%9F%8D%97_%281%29.jpeg?1743352387" alt="" />
-  <div className="space-y-2 text-center sm:text-left">
-    <div className="space-y-0.5">
-      <p className="text-lg font-semibold text-black">Erin Lindford</p>
-      <p className="font-medium text-gray-500">Product Engineer</p>
-    </div>
-    <button className="border-purple-200 text-purple-600 hover:border-transparent hover:bg-purple-600 hover:text-white active:bg-purple-700 ...">
+
+  const [condition,setCondition]=useState('cancer');
+  const [search, setSearch]=useState(false);
+
+  function handleChange(event){
+    setCondition(event.target.value);
+  }
+
+  function handleSubmit(event){
+    event.preventDefault();
+    console.log(condition);
+    setSearch(true);
+  }
+
+
+
+
+
+let searchForm=(
+
+  <form onSubmit={handleSubmit}>
+      <input 
+      type='text' 
+      placeholder='Enter a female condition' 
+      className='p-4 mr-2 border-2 border-solid bg-sky-50' 
+      onChange={handleChange}
+      required/>
+
+
+    <button className="border-purple-200  pr-2 pl-2 pt-3 pb-3 rounded-full bg-sky-500 hover:bg-purple-600 hover:text-white active:bg-purple-700 ...">
       Message
     </button>
-  </div>
-</div>
+    </form>
+
+)
+
+
+
+if(search){
+  return (
+    searchForm
+  )
+}else{
+  return(
+    <>
+    <Demo />
+    {searchForm}
 
     </>
   )
 }
 
+
+
+ 
+}
+
 export default App
+
+
