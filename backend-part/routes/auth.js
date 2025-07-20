@@ -1,20 +1,11 @@
 import express from "express";
-import { PORT } from "./config.js";
-import mongoose from "mongoose";
-import cors from "cors";
-import User from "./models/User.js"
+const router=express.Router();
+import User from "./models/User.js";
 import jwt from "jsonwebtoken";
-import authRoutes from "./routes/auth.js";
-
-
-const app=express();
-app.use(express.json());
-app.user('/api', authRoutes);
 
 
 
-
-app.post('/signup', async (req, res) => {
+exports.router.post('/signup', async (req, res) => {
     try {
         const user = new User(req.body);
         await user.save();
@@ -24,7 +15,7 @@ app.post('/signup', async (req, res) => {
     }
 })
 
-app.post('/login', async (req , res)=> {
+exports.router.post('/login', async (req , res)=> {
     try {
         const user = await User.findOne({email: req.body.email});
         if(!user || !(await user.findOne({password: req.body.password}))){
@@ -36,14 +27,4 @@ app.post('/login', async (req , res)=> {
      res.status(500).send(error);
     }
 })
-
-
-
-mongoose.connect(process.env.MONGO_URI,{})
-.then(console.log("Mongo db running"))
-.catch(err => console.log(`Error in mongodb: ${err}`))
-
-app.listen(PORT, ()=> {
-console.log(`App is listening on port ${PORT}`);
-});
 
