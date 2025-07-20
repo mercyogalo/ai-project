@@ -5,11 +5,12 @@ import cors from "cors";
 import User from "./models/User.js"
 import jwt from "jsonwebtoken";
 import authRoutes from "./routes/auth.js";
+import chatRoutes from "./routes/chat.js";
 
 
 const app=express();
 app.use(express.json());
-app.user('/api', authRoutes);
+app.use('/api', authRoutes);
 
 
 
@@ -35,6 +36,10 @@ app.post('/login', async (req , res)=> {
     } catch (error) {
      res.status(500).send(error);
     }
+})
+
+app.post('/chat', async(req, res)=> {
+
 })
 
 
