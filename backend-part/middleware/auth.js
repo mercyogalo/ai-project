@@ -13,4 +13,4 @@ const auth = (req, res, next)=>{
     }
 }
 
-exports.auth;
+export default auth;

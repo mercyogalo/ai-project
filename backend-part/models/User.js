@@ -1,3 +1,4 @@
+import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
@@ -17,10 +18,9 @@ userSchema.pre('save', async function (next){
     next();
 })
 
-userSchema.methods.comparePassword = function (password){
-    return bcrypt.compare(password, this.password);
-}
-
+userSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
 const User=mongoose.model('User', userSchema)
-exports.User;
+export default User;
