@@ -17,7 +17,7 @@ export async function generateOpenRouterResponse(query){
         headers: {
           "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:3000", // Or your frontend domain
+          "HTTP-Referer": "https://ai-project-1-9gvt.onrender.com/", // Or your frontend domain
           "X-Title": "Women's Health Assistant"
         }
       }
