@@ -14,6 +14,7 @@ export default function History() {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHistory(res.data);
+      console.log(res.data);
     } catch (err) {
       console.error("Error fetching history:", err);
       alert("Failed to fetch history");
@@ -75,22 +76,18 @@ export default function History() {
         ) : (
           <ul className="space-y-4">
             {history.map((item) => (
-              <li key={item._id} className="bg-white p-4 rounded shadow">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="text-gray-800 font-medium">{item.query}</p>
-                    <p className="text-sm text-gray-500">
-                      {new Date(item.timestamp).toLocaleString()}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => deleteItem(item._id)}
-                    className="text-red-500 hover:underline"
-                  >
+             
+          <div tabIndex={item._id}  className="collapse collapse-plus bg-base-100 border-base-300 border">
+          <div className="collapse-title font-semibold">{item.query}</div>
+          <div className="collapse-content text-sm">{item.response} </div>
+           <p className="text-sm text-gray-500 ms-2">
+           {new Date(item.timestamp).toLocaleString()}
+            </p>
+               <button onClick={() => deleteItem(item._id)} className="text-red-500 hover:underline">
                     Delete
-                  </button>
-                </div>
-              </li>
+                </button>
+          </div>
+
             ))}
           </ul>
         )}

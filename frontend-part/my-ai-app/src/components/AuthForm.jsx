@@ -1,9 +1,11 @@
 // src/components/AuthForm.jsx
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import '../App.css';
 
 export default function AuthForm({ title, onSubmit, isLogin }) {
   const [form, setForm] = useState({ email: "", password: "", name: "" });
+  
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -14,8 +16,13 @@ export default function AuthForm({ title, onSubmit, isLogin }) {
   };
 
   return (
-    <div className="max-w-sm mx-auto p-6 bg-white rounded-lg shadow-xl mt-10">
-      <h2 className="text-2xl font-bold mb-4 text-center">{title} in to your account</h2>
+    <>
+  
+    
+     
+      <div className="max-w-sm mx-auto p-6 bg-white rounded-lg shadow-xl mt-1">
+         <img className="logoImage shadow-xl" src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/170/915/original/download.jpeg?1753116883"/>
+      <h2 className="text-xl font-bold mb-4 text-blue-600 text-center">{title} in to Femicare</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {!isLogin && (
           <input
@@ -72,5 +79,7 @@ export default function AuthForm({ title, onSubmit, isLogin }) {
 
       </form>
     </div>
+
+    </>
   );
 }

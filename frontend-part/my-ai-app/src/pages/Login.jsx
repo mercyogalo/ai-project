@@ -2,20 +2,32 @@
 import AuthForm from "../components/AuthForm";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+
 
 export default function Login() {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (form) => {
     try {
       const res = await api.post("/login", form);
       localStorage.setItem("token", res.data.token);
-      alert("Login successful");
       navigate("/dashboard");
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+       setErrorMessage("Invalid email or password.");
+       console.log(err);
     }
   };
 
-  return <AuthForm title="Login" onSubmit={handleLogin} isLogin={true} />;
+  return (
+    <>
+  <AuthForm title="Login" onSubmit={handleLogin} isLogin={true} />
+   {errorMessage && (
+  <p className="text-sm text-red-500 text-center">{errorMessage}</p>
+ )}
+ </>
+ 
+);
+
 }

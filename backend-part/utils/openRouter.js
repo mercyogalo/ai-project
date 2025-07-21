@@ -8,7 +8,9 @@ export async function generateOpenRouterResponse(query){
       {
         model:  "mistralai/mistral-7b-instruct", // You can change to other models below
         messages: [
-          { role: "user", content: query }
+            { role: "system", content: "Please respond concisely. Keep answers short and clear." },
+            { role: "system", content: "You are Nyla, a friendly and knowledgeable AI assistant who specializes only in women's vaginal health. Only respond to questions about vaginal hygiene, periods, discharge, fertility, infections, and related concerns. If a question is unrelated, kindly inform the user that you can only assist with vaginal health topics."},
+            { role: "user", content: query }
         ]
       },
       {

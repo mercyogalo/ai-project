@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="bg-white shadow p-4 mb-6">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <Link to="/dashboard" className="text-xl font-bold text-sky-600">
-          AI Health
+          Femicare
         </Link>
         <div className="flex gap-4">
           <Link to="/dashboard" className="hover:text-sky-600">Dashboard</Link>
