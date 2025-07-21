@@ -27,7 +27,6 @@ export default function Dashboard() {
 
     } catch (error) {
       console.log(`The error is:${error}`);
-      alert("Search failed");
     } finally {
       setLoading(false);
     }

@@ -12,7 +12,6 @@ export default function Signup() {
   const handleSignup = async (form) => {
     try {
       await api.post("/signup", form);
-      alert("Signup successful");
       navigate("/");
     } catch (err) {
       setErrorMessage("Signup failed. Try again");

@@ -9,22 +9,19 @@ export default function History() {
   const fetchHistory = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log(token);
       const res = await api.get("/chat/history", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHistory(res.data);
-      console.log(res.data);
+    
     } catch (err) {
       console.error("Error fetching history:", err);
-      alert("Failed to fetch history");
+
     }
   };
 
   const deleteItem = async (id) => {
-    const confirm = window.confirm("Delete this search?");
-    if (!confirm) return;
-
+    
     try {
       const token = localStorage.getItem("token");
       await api.delete(`/chat/history/${id}`, {
@@ -37,8 +34,6 @@ export default function History() {
   };
 
   const deleteAll = async () => {
-    const confirm = window.confirm("Delete all history?");
-    if (!confirm) return;
 
     try {
       const token = localStorage.getItem("token");
