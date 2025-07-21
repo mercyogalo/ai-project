@@ -6,7 +6,7 @@ export async function generateOpenRouterResponse(query){
          const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "mistralai/mixtral-8x7b", // You can change to other models below
+        model:  "mistralai/mistral-7b-instruct", // You can change to other models below
         messages: [
           { role: "user", content: query }
         ]
@@ -23,7 +23,11 @@ export async function generateOpenRouterResponse(query){
 
     return response.data.choices[0].message.content;
     } catch (error) {
-    console.error("OpenRouter Error:", error.response?.data || error.message);
+   console.error("OpenRouter Error:", {
+  message: error.message,
+  status: error.response?.status,
+  data: error.response?.data,
+});
     throw new Error("Failed to get AI response.");
     }
 }

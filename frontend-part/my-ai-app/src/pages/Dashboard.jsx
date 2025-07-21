@@ -2,6 +2,9 @@
 import { useState } from "react";
 import api from "../utils/api";
 import Navbar from "../components/Navbar";
+import Demo from "../Mytypewriter";
+import Typewriter from 'react-typewriter-animate';
+import "react-typewriter-animate/dist/Typewriter.css";
 
 export default function Dashboard() {
   const [query, setQuery] = useState("");
@@ -21,18 +24,19 @@ export default function Dashboard() {
         }
       );
       setResponse(res.data.response);
-    } catch (err) {
+      
+    } catch (error) {
+      console.log(`The error is:${error}`);
       alert("Search failed");
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 px-4 py-6">
-      <Navbar />
-      <div className="max-w-2xl mx-auto mt-10">
-        <form onSubmit={handleSubmit} className="flex gap-4">
+
+  const searchForm =(
+    <>
+ <form onSubmit={handleSubmit} className="flex gap-4">
           <input
             type="text"
             placeholder="Ask a question..."
@@ -48,11 +52,27 @@ export default function Dashboard() {
             {loading ? "Thinking..." : "Ask"}
           </button>
         </form>
+        </>
+ );
 
+  return (
+    <div className="min-h-screen bg-gray-50 px-4 py-6">
+      <Navbar />
+      <Demo />
+      <div className="max-w-2xl mx-auto mt-10">
+       
+        {searchForm }
         {response && (
           <div className="bg-white p-4 mt-6 rounded shadow">
             <h2 className="font-semibold text-lg text-sky-700 mb-2">AI Response:</h2>
-            <p className="text-gray-700">{response}</p>
+            <p className="text-gray-700">
+              <Typewriter
+              words={response}
+              loop={0}
+              typeSpeed={80}
+              cursor
+              />
+              </p>
           </div>
         )}
       </div>
