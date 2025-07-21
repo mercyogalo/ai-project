@@ -23,7 +23,7 @@ export async function generateOpenRouterResponse(query){
 
     return response.data.choices[0].message.content;
     } catch (error) {
-    console.error("OpenRouter Error:", err.response?.data || err.message);
+    console.error("OpenRouter Error:", error.response?.data || error.message);
     throw new Error("Failed to get AI response.");
     }
 }
