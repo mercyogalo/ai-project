@@ -37,7 +37,7 @@ export default function Dashboard() {
       <input
         type="text"
         placeholder="Ask a question..."
-        className="flex-1 px-4 py-2 border rounded border-4 border-sky-500/100 ..."
+        className="flex-1 px-4 py-2 border text-red-500 rounded border-4 border-sky-500/100 ..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         required
@@ -63,10 +63,10 @@ export default function Dashboard() {
       {chats.map((chat, index) => (
         <div key={index}>
           <div className="chat chat-start">
-            <div className="chat-bubble">{chat.query}</div>
+            <div className="chat-bubble text-dark">{chat.query}</div>
           </div>
           <div className="chat chat-end">
-            <div className="chat-bubble">
+            <div className="chat-bubble text-dark ">
                 <Typewriter
                 words={[chat.response]} // or response if from state
                 loop={1}

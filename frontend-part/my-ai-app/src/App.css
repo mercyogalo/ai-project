@@ -24,3 +24,6 @@ body{
 .bg-light{
     background-color: white;
 }
+.text-dark{
+    color: black;
+}
