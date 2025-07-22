@@ -9,8 +9,8 @@ export default function Navbar() {
           Femicare
         </Link>
         <div className="flex gap-4">
-          <Link to="/dashboard" className="hover:text-sky-600">Dashboard</Link>
-          <Link to="/history" className="hover:text-sky-600">History</Link>
+          <Link to="/dashboard" className="text-sky-600">Dashboard</Link>
+          <Link to="/history" className="text-sky-600">History</Link>
           <button
             onClick={() => {
               localStorage.removeItem("token");

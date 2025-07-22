@@ -37,7 +37,7 @@ export default function Dashboard() {
       <input
         type="text"
         placeholder="Ask a question..."
-        className="flex-1 px-4 py-2 border rounded"
+        className="flex-1 px-4 py-2 border rounded border-4 border-sky-500/100 ..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         required

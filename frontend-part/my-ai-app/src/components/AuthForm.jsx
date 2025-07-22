@@ -60,7 +60,7 @@ export default function AuthForm({ title, onSubmit, isLogin }) {
 
  {isLogin && (
 <div className="text-center">
-<span>Don't have an account?</span>
+<span className="text-blue-600">Don't have an account?</span>
 <Link to="/signup" className="text-blue-600 hover:text-blue-700 ms-1" >Register</Link>
 </div>
  )
@@ -69,7 +69,7 @@ export default function AuthForm({ title, onSubmit, isLogin }) {
 
  {!isLogin && (
 <div className="text-center">
-<span>Already have an account?</span>
+<span className="text-blue-600">Already have an account?</span>
 <Link to="/" className="text-blue-600 hover:text-blue-700 ms-1">Login</Link>
 </div>
  )

@@ -7,6 +7,7 @@ import './App.css'
 
 export default function App() {
   return (
+    <div className="bg-white">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -15,5 +16,6 @@ export default function App() {
           <Route path="/history" element={<History />} />
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
